@@ -9,6 +9,8 @@ const scale=20;
 const rows= canvas.height/scale;
 const columns= canvas.width/ scale;
 
+let score=0;
+
 //lets build the snake 
 let snake=[];
 snake[0]={
@@ -82,7 +84,7 @@ if(snakeY < 0){
 }
 
 //if the snakes eats the food it grows
-let score=0;
+
 if(snakeX==food.x && snakeY==food.y){
     score++;
     //for new food position
@@ -101,9 +103,17 @@ let newHead={
     x: snakeX,
     y: snakeY
 }
-if(eatSelf(newHead,snake)){
-    clearInterval(playGme)
+if (eatSelf(newHead, snake)) {
+    clearInterval(playGme);
+    // Display "Game Over"
+    ctx.fillStyle = "red";
+    ctx.font = "50px Arial";
+    ctx.textAlign = "center";
+    ctx.fillText("Game Over", canvas.width / 2, canvas.height / 2);
+    return; // Exit the draw function
 }
+
+
 
 snake.unshift(newHead);
 }
