@@ -30,7 +30,7 @@ ctx.strokeRect(snake[i].x,snake[i].y,scale,scale);
 
 //old head position
 let snakeX= snake[0].x;
-let snkaeY=snake[0].y;
+let snakeY=snake[0].y;
 console.log(snakeX);
 
 //which direction
@@ -39,10 +39,25 @@ if(d=="up") snakeY-=scale;
 if(d=="right")snakeX+=scale;
 if(d=="down")snakeY+=scale;
 
+if(snakeX > canvas.width){
+    snakeX=0;
+}
+if(snakeY > canvas.width){
+    snakeY=0;
+}
+if(snakeX < 0){
+    snakeX=canvas.width;
+}
+if(snakeY < 0){
+    snakeY=canvas.width;
+}
+
 //new head position
 let newHead={
     x: snakeX,
     y: snakeY
 }
+snake.pop();
+snake.unshift(newHead);
 }
 
