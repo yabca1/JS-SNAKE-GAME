@@ -15,7 +15,23 @@ snake[0]={
  x:(Math.floor(Math.random()*columns))*scale,
  y:(Math.floor(Math.random()*columns))*scale   
 }
+//event for changing the direction
 let d="right";
+
+document.onkeydown = direction;
+function direction(event){
+    let key = event.keyCode;
+    if(key==37 && d != "right" ){
+        d="left";
+    }else if (key==38 && d!="down"){
+        d="up";
+    }else if (key==39 && d!="left"){
+        d="right";
+    }else if(key==40 && d!="up"){
+        d="down";
+    }
+}
+
 
 // call our draw function every 100ms
 let playGme=setInterval(draw,100);
