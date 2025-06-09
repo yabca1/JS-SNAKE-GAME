@@ -44,6 +44,23 @@ function direction(event){
 
 // call our draw function every 100ms
 let playGme=setInterval(draw,100);
+
+//pause 
+
+let isPaused = false;
+
+document.getElementById("pause").onclick = function () {
+    if (!isPaused) {
+        clearInterval(playGme);
+        this.textContent = "Resume";
+        isPaused = true;
+    } else {
+        playGme = setInterval(draw, 100);
+        this.textContent = "Pause";
+        isPaused = false;
+    }
+};
+
 function draw(){
     ctx.clearRect(0,0,canvas.width,canvas.height);
     for(let i=0; i<snake.length; i++){
@@ -115,10 +132,16 @@ if (eatSelf(newHead, snake)) {
     ctx.font = "50px Arial";
     ctx.textAlign = "center";
     ctx.fillText("Game Over", canvas.width / 2, canvas.height / 2);
+    document.getElementById("pause").style.display = "none";
+
 
     // Show HTML message and restart button
     document.getElementById("status").style.display = "block";
     document.getElementById("restart").style.display = "inline";
+    document.getElementById("pause").style.display = "inline";
+document.getElementById("pause").textContent = "Pause";
+isPaused = false;
+
     return; // Exit the draw function
 }
 
