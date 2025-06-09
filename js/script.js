@@ -21,10 +21,12 @@ let d="right";
 let playGme=setInterval(draw,100);
 function draw(){
     ctx.clearRect(0,0,canvas.width,canvas.height);
+    for(let i=0; i<snake.length; i++){
 ctx.fillStyle="#fff";
 ctx.strokeStyle="red";
-ctx.fillRect(snake[0].x,snake[0].y,scale,scale);
-ctx.strokeRect(snake[0].x,snake[0].y,scale,scale);
+ctx.fillRect(snake[i].x,snake[i].y,scale,scale);
+ctx.strokeRect(snake[i].x,snake[i].y,scale,scale);
+}
 
 //old head position
 let snakeX= snake[0].x;
@@ -36,4 +38,11 @@ if(d=="left") snakeX-=scale;
 if(d=="up") snakeY-=scale;
 if(d=="right")snakeX+=scale;
 if(d=="down")snakeY+=scale;
+
+//new head position
+let newHead={
+    x: snakeX,
+    y: snakeY
 }
+}
+
