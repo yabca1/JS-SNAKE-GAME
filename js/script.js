@@ -110,6 +110,10 @@ if (eatSelf(newHead, snake)) {
     ctx.font = "50px Arial";
     ctx.textAlign = "center";
     ctx.fillText("Game Over", canvas.width / 2, canvas.height / 2);
+
+    // Show HTML message and restart button
+    document.getElementById("status").style.display = "block";
+    document.getElementById("restart").style.display = "inline";
     return; // Exit the draw function
 }
 
@@ -127,3 +131,22 @@ function eatSelf(head,array){
     }
     return false;
 }
+document.getElementById("restart").onclick = function() {
+    // Reset game state
+    snake = [{
+        x:(Math.floor(Math.random()*columns))*scale,
+        y:(Math.floor(Math.random()*rows))*scale
+    }];
+    food = {
+        x:(Math.floor(Math.random()*columns))*scale,
+        y:(Math.floor(Math.random()*rows))*scale
+    };
+    d = "right";
+    score = 0;
+
+    document.getElementById("status").style.display = "none";
+    document.getElementById("restart").style.display = "none";
+
+    clearInterval(playGme);
+    playGme = setInterval(draw, 100);
+};
