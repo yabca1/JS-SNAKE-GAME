@@ -62,20 +62,62 @@ document.getElementById("pause").onclick = function () {
 };
 
 function draw(){
+    //add tail fade effect
     ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
 ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    for(let i=0; i<snake.length; i++){
-ctx.fillStyle="#fff";
-ctx.strokeStyle="red";
-ctx.fillRect(snake[i].x,snake[i].y,scale,scale);
-ctx.strokeRect(snake[i].x,snake[i].y,scale,scale);
-// displaying the score
+  for(let i = 0; i < snake.length; i++) {
+    ctx.fillStyle = "#fff";
+    ctx.strokeStyle = "red";
+    ctx.fillRect(snake[i].x, snake[i].y, scale, scale);
+    ctx.strokeRect(snake[i].x, snake[i].y, scale, scale);
+
+    // displaying the score
 ctx.fillStyle = "white";
 ctx.font = "20px Arial";
 ctx.fillText("Score: " + score, 20, 20);
 
+
+    // 🧠 Add this block INSIDE the loop, AFTER drawing the first segment
+    if (i === 0) {
+        ctx.fillStyle = "black"; // eye color
+        const eyeSize = 3;
+
+        let eye1X, eye1Y, eye2X, eye2Y;
+
+        // Set eye positions based on direction
+        switch (d) {
+            case "right":
+                eye1X = snake[i].x + 14;
+                eye2X = snake[i].x + 14;
+                eye1Y = snake[i].y + 4;
+                eye2Y = snake[i].y + 12;
+                break;
+            case "left":
+                eye1X = snake[i].x + 3;
+                eye2X = snake[i].x + 3;
+                eye1Y = snake[i].y + 4;
+                eye2Y = snake[i].y + 12;
+                break;
+            case "up":
+                eye1X = snake[i].x + 4;
+                eye2X = snake[i].x + 12;
+                eye1Y = snake[i].y + 3;
+                eye2Y = snake[i].y + 3;
+                break;
+            case "down":
+                eye1X = snake[i].x + 4;
+                eye2X = snake[i].x + 12;
+                eye1Y = snake[i].y + 14;
+                eye2Y = snake[i].y + 14;
+                break;
+        }
+
+        ctx.fillRect(eye1X, eye1Y, eyeSize, eyeSize);
+        ctx.fillRect(eye2X, eye2Y, eyeSize, eyeSize);
+    }
 }
+
 
 //draw food
 ctx.fillStyle="#fff";
