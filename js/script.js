@@ -62,7 +62,9 @@ document.getElementById("pause").onclick = function () {
 };
 
 function draw(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+
     for(let i=0; i<snake.length; i++){
 ctx.fillStyle="#fff";
 ctx.strokeStyle="red";
