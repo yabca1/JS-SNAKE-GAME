@@ -15,6 +15,13 @@ snake[0]={
  x:(Math.floor(Math.random()*columns))*scale,
  y:(Math.floor(Math.random()*columns))*scale   
 }
+
+//create the food object
+
+let food={
+    x:(Math.floor(Math.random()*columns))*scale,
+    y:(Math.floor(Math.random()*columns))*scale  
+}
 //event for changing the direction
 let d="right";
 
@@ -43,6 +50,12 @@ ctx.strokeStyle="red";
 ctx.fillRect(snake[i].x,snake[i].y,scale,scale);
 ctx.strokeRect(snake[i].x,snake[i].y,scale,scale);
 }
+
+//draw food
+ctx.fillStyle="#yellow";
+ctx.strokeStyle="red";
+ctx.fillRect(food.x,food.y,scale,scale);
+ctx.fillRect(food.x,food.y,scale,scale);
 
 //old head position
 let snakeX= snake[0].x;
