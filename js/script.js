@@ -101,7 +101,19 @@ let newHead={
     x: snakeX,
     y: snakeY
 }
+if(eatSelf(newHead,snake)){
+    clearInterval(playGme)
+}
 
 snake.unshift(newHead);
 }
 
+//check if snake is eating itself
+function eatSelf(head,array){
+    for(let i=0;  i<array.length; i++){
+        if(head.x==array[i].x && head.y==array[i].y){
+            return true;
+        }
+    }
+    return false;
+}
