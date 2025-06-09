@@ -115,6 +115,36 @@ ctx.fillText("Score: " + score, 20, 20);
 
         ctx.fillRect(eye1X, eye1Y, eyeSize, eyeSize);
         ctx.fillRect(eye2X, eye2Y, eyeSize, eyeSize);
+
+        // Draw the tongue
+ctx.strokeStyle = "red";
+ctx.lineWidth = 2;
+ctx.beginPath();
+
+let tongueX = snake[i].x + scale / 2;
+let tongueY = snake[i].y + scale / 2;
+
+// Extend tongue in current direction
+switch (d) {
+    case "right":
+        ctx.moveTo(tongueX + 5, tongueY);
+        ctx.lineTo(tongueX + 10, tongueY);
+        break;
+    case "left":
+        ctx.moveTo(tongueX - 5, tongueY);
+        ctx.lineTo(tongueX - 10, tongueY);
+        break;
+    case "up":
+        ctx.moveTo(tongueX, tongueY - 5);
+        ctx.lineTo(tongueX, tongueY - 10);
+        break;
+    case "down":
+        ctx.moveTo(tongueX, tongueY + 5);
+        ctx.lineTo(tongueX, tongueY + 10);
+        break;
+}
+ctx.stroke();
+
     }
 }
 
