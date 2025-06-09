@@ -52,8 +52,8 @@ ctx.strokeRect(snake[i].x,snake[i].y,scale,scale);
 }
 
 //draw food
-ctx.fillStyle="#yellow";
-ctx.strokeStyle="red";
+ctx.fillStyle="#fff";
+ctx.strokeStyle="yellow";
 ctx.fillRect(food.x,food.y,scale,scale);
 ctx.fillRect(food.x,food.y,scale,scale);
 
@@ -81,12 +81,27 @@ if(snakeY < 0){
     snakeY=canvas.width;
 }
 
+//if the snakes eats the food it grows
+let score=0;
+if(snakeX==food.x && snakeY==food.y){
+    score++;
+    //for new food position
+    food={
+        x:(Math.floor(Math.random()*columns))*scale,
+        y:(Math.floor(Math.random()*rows))*scale
+    }
+    //we dont remove the tail   
+}else{
+    //remove the tail
+    snake.pop();
+}
+
 //new head position
 let newHead={
     x: snakeX,
     y: snakeY
 }
-snake.pop();
+
 snake.unshift(newHead);
 }
 
