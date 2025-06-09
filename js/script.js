@@ -15,7 +15,7 @@ snake[0]={
  x:(Math.floor(Math.random()*columns))*scale,
  y:(Math.floor(Math.random()*columns))*scale   
 }
-
+let d="right";
 
 // call our draw function every 100ms
 let playGme=setInterval(draw,100);
@@ -25,4 +25,15 @@ ctx.fillStyle="#fff";
 ctx.strokeStyle="red";
 ctx.fillRect(snake[0].x,snake[0].y,scale,scale);
 ctx.strokeRect(snake[0].x,snake[0].y,scale,scale);
+
+//old head position
+let snakeX= snake[0].x;
+let snkaeY=snake[0].y;
+console.log(snakeX);
+
+//which direction
+if(d=="left") snakeX-=scale;
+if(d=="up") snakeY-=scale;
+if(d=="right")snakeX+=scale;
+if(d=="down")snakeY+=scale;
 }
