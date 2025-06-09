@@ -15,7 +15,14 @@ snake[0]={
  x:(Math.floor(Math.random()*columns))*scale,
  y:(Math.floor(Math.random()*columns))*scale   
 }
+
+
+// call our draw function every 100ms
+let playGme=setInterval(draw,100);
+function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
 ctx.fillStyle="#fff";
 ctx.strokeStyle="red";
 ctx.fillRect(snake[0].x,snake[0].y,scale,scale);
 ctx.strokeRect(snake[0].x,snake[0].y,scale,scale);
+}
