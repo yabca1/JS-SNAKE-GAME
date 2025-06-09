@@ -51,6 +51,11 @@ ctx.fillStyle="#fff";
 ctx.strokeStyle="red";
 ctx.fillRect(snake[i].x,snake[i].y,scale,scale);
 ctx.strokeRect(snake[i].x,snake[i].y,scale,scale);
+// displaying the score
+ctx.fillStyle = "white";
+ctx.font = "20px Arial";
+ctx.fillText("Score: " + score, 20, 20);
+
 }
 
 //draw food
