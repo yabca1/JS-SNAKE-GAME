@@ -1,5 +1,5 @@
-const canvas=document.queryselector(".canvas");
-const ctx= canvas.getcontext("2d");
+const canvas=document.querySelector(".canvas");
+const ctx= canvas.getContext("2d");
 
 
 console.log(ctx);
@@ -8,3 +8,14 @@ console.log(ctx);
 const scale=20;
 const rows= canvas.height/scale;
 const columns= canvas.width/ scale;
+
+//lets build the snake 
+let snake=[];
+snake[0]={
+ x:(Math.floor(Math.random()*columns))*scale,
+ y:(Math.floor(Math.random()*columns))*scale   
+}
+ctx.fillStyle="#fff";
+ctx.strokeStyle="red";
+ctx.fillRect(snake[0].x,snake[0].y,scale,scale);
+ctx.strokeRect(snake[0].x,snake[0].y,scale,scale);
